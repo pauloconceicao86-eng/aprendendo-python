@@ -165,3 +165,84 @@ print(total)
 ---
 
 *Atualizo este arquivo ao final de cada aula.*
+
+---
+
+## 8. Aula 2: input() e conversão de types
+
+### input()
+
+Faz o programa **perguntar** algo e guarda a resposta em uma variable.
+
+```python
+nome = input("Qual é o seu nome? ")
+```
+
+- O texto entre aspas é a pergunta que aparece na tela.
+- O programa para e espera a pessoa digitar e apertar Enter.
+- **O `input()` sempre devolve texto (`str`)**, mesmo que a pessoa digite um número.
+
+### Conversão de types
+
+| Function | Converte para | Exemplo |
+|---|---|---|
+| `int()` | número inteiro | `int("20")` vira `20` |
+| `float()` | número com decimais | `float("2.50")` vira `2.5` |
+| `str()` | texto | `str(20)` vira `"20"` |
+
+O `input()` fica **dentro** da conversão: primeiro a pessoa digita, depois o texto vira número.
+
+```python
+idade = int(input("Quantos anos você tem? "))
+preco = float(input("Qual o preço? "))
+```
+
+Ao digitar decimais, use **ponto** (`2.50`), e não vírgula.
+
+### f-string
+
+Monta um texto com variables dentro.
+
+```python
+print(f"Você comprou {quantidade} unidades de {produto} por R${total:.2f}.")
+```
+
+- O `f` antes das aspas avisa que o texto tem variables.
+- O que está entre `{ }` é trocado pelo valor da variable.
+- `:.2f` mostra o número com **2 casas decimais** (`1200.00`).
+
+### Exemplo completo (compra.py)
+
+```python
+produto = input("qual produto deseja comprar? ")
+preco = float(input("qual o preço do produto? "))
+quantidade = int(input("quantas unidades deseja comprar? "))
+total = preco * quantidade
+print(f"Você comprou {quantidade} unidades de {produto} por R${total:.2f}.")
+```
+
+### Erro novo: ValueError
+
+```
+ValueError: could not convert string to float: 'abc'
+```
+
+- **Significa:** o `float()` ou `int()` recebeu um texto que não parece número.
+- **Causa comum:** a pessoa digitou letras, vírgula no lugar do ponto, ou deixou vazio.
+- **Solução futura:** tratar o erro com `try`/`except` (vamos ver mais adiante).
+
+### Regras desta aula
+
+1. `input()` devolve **sempre texto**. Para fazer conta, converta antes.
+2. Use `int()` para inteiros e `float()` para decimais.
+3. Dentro do `print()`, a f-string mostra o valor da variable, sem aspas em volta do nome.
+4. Programas reais precisam lidar com respostas inesperadas.
+
+### Vocabulário novo
+
+| Termo | Significado |
+|---|---|
+| *input* | entrada de dados feita pelo usuário |
+| *f-string* | texto com variables dentro de `{ }` |
+| *type conversion* | transformar um type em outro |
+| *ValueError* | erro de valor inválido para a conversão |
